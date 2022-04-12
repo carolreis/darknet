@@ -1,19 +1,22 @@
 # My changes:
 ### Para usar a GPU
 
+```
 GPU=1
 DEBUG=1
 CC=gcc-7
 CPP=g++-7
-NVCC=/usr/local/cuda-10.1/bin/nvcc 
+NVCC=/usr/local/cuda-10.1/bin/nvcc
 # ou NVCC=/usr/local/cuda/bin/nvcc
 SETGCC = --compiler-bindir /usr/bin/gcc-7
 
 $(OBJDIR)%.o: %.cu $(DEPS)
 	$(NVCC) $(ARCH) $(COMMON) $(SETGCC) --compiler-options "$(CFLAGS)" -c $< -o $@
+```
 
 examples/detector.py
     net = dn.load_net("cfg/yolov3.cfg", "/home/caroline/robotics/src/darknet_ros/darknet/backup/yolo-thor_final.weights", 0)
+
 
 python/darknet.py
     lib = CDLL("/home/caroline/robotics/src/darknet_ros/darknet/libdarknet.so", RTLD_GLOBAL)
